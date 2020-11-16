@@ -1,4 +1,4 @@
-from tkinter import Tk, Menu, filedialog
+from tkinter import Tk, Menu, filedialog, Label, Text
 from tkinter import messagebox as msg
 import pandas as pd
 class Prediction():
@@ -26,6 +26,14 @@ class Prediction():
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: self.aboutmenu())
+        self.durlab = Label(self.master, text="Duration")
+        self.durlab.pack()
+        self.durtext = Text(self.master, height=1)
+        self.durtext.pack()
+        self.outcamelab = Label(self.master, text="Poutcome")
+        self.outcamelab.pack()
+        self.joblab = Label(self.master, text="Job")
+        self.joblab.pack()
     def column_validation(self):
         if all([item in self.df.columns for item in ['default', 'balance', 'housing', 'loan', 'contact', 'day', 'month', 'duration', 'campaign']]):
             msg.showinfo("SUCCESS", "CSV FILE ADDED SUCCESSFULLY")
